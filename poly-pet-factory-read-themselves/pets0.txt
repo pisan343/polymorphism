@@ -1,0 +1,6 @@
+C Mr Fluffy, 2 Persian black, 12 lbs
+D Sweet 4, white, 16, lbs
+T Silly Speedy, 6 Unknown, brown, 4 lbs
+C Lazy Hunter, 8 American orange, 16 lbs
+X cats are: C FirstName LastName, Age Type, Weight WeightUnits
+X dogs are: D Name Age, Color, Weight, WeightUnits
