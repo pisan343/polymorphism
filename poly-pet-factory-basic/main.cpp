@@ -24,7 +24,7 @@ class Dog : public Pet {
 // PetFactory is the only one that knows about different Pets
 class PetFactory {
  public:
-  static Pet *create(string type) {
+  static Pet *create(const string &type) {
     if (type == "Cat")
       return new Cat();
     else
