@@ -48,10 +48,12 @@ void FruitTest() {
   string name;
   int totalEnergy{0};
   cout << "Give name: ";
-  while (cin >> name && name.empty()) {
+  while (cin >> name && !name.empty()) {
     Fruit *f = FruitFactory::create(name);
-    if (f) {
+    if (f != nullptr) {
       totalEnergy += f->eat();
+    } else {
+      cout << "Did not get a valid fruit" << endl;
     }
     cout << "Give name: ";
   }
