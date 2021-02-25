@@ -1,0 +1,6 @@
+apple
+banana
+apple
+kiwi
+banana
+durian

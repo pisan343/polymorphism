@@ -16,6 +16,5 @@ Pet *HorseFactory::create() const {
   return new Horse();
 }
 
-namespace {
+// creating the object registers the type at run time
 HorseFactory anonymous_HorseFactory;
-}

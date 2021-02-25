@@ -113,17 +113,7 @@ class DogFactory : public PetFactory {
   Pet *create() const override { return new Dog(); }
 };
 
-/**
- * factories have been declared, and now have to be registered
- * this is normally done in the cpp file for the concrete factory
- * CatFactory.cpp or DogFactory.cpp
- * Creating a factory automatically registers it
- * Using anonymous namespace to not create a global variable
- *  // NOLINT stops the warning message about may throw an exception
- */
-namespace {
-CatFactory anonymous_CatFactory __attribute__((unused));   // NOLINT
-DogFactory anonymous_DogFactory __attribute__((unused));   // NOLINT
-}
+
+
 
 #endif // POLY_PET_FACTORY_SELF_REGISTER_PET_H

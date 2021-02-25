@@ -53,7 +53,7 @@ void FruitTest() {
     if (f != nullptr) {
       totalEnergy += f->eat();
     } else {
-      cout << "Did not get a valid fruit" << endl;
+      cout << "Goit " << name << ", not a valid fruit" << endl;
     }
     cout << "Give name: ";
   }
