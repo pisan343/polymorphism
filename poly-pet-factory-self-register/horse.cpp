@@ -3,18 +3,15 @@
 //
 
 #include "horse.h"
+#include <iostream>
 
-void Horse::say() const {
-  cout << "Neighhhh" << endl;
-}
+using namespace std;
 
-HorseFactory::HorseFactory() {
-  Pet::registerType("Horse", this);
-}
+void Horse::say() const { cout << "Neighhhh" << endl; }
 
-Pet *HorseFactory::create() const {
-  return new Horse();
-}
+HorseFactory::HorseFactory() { Pet::registerType("Horse", this); }
+
+Pet *HorseFactory::create() const { return new Horse(); }
 
 // creating the object registers the type at run time
 HorseFactory anonymous_HorseFactory;

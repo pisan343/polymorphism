@@ -18,11 +18,11 @@
  *
  */
 
-#include <string>
-#include <iostream>
-#include <sstream>
 #include <fstream>
+#include <iostream>
 #include <map>
+#include <sstream>
+#include <string>
 #include <vector>
 
 #include "pet.h"
@@ -31,8 +31,7 @@ using namespace std;
 
 // helper - get rid of spaces before and after string
 string trimString(const string &str) {
-  return str.substr(str.find_first_not_of(' '),
-                    str.find_last_not_of(' ') + 1);
+  return str.substr(str.find_first_not_of(' '), str.find_last_not_of(' ') + 1);
 }
 
 // helper - split string into multiple based on delimiter
@@ -65,25 +64,6 @@ vector<Pet *> readPetsFromFile(const string &filename) {
   return pets;
 }
 
-// test pets by creating a couple
-void testCreation() {
-  cout << "Testing pets by reading some pets" << endl;
-  vector<Pet *> pets;
-  pets.push_back(Pet::create("Cat"));
-  pets.push_back(Pet::create("Dog"));
-  pets.push_back(Pet::create("Turtle"));
-  pets.push_back(Pet::create("Horse"));
-  // index based for loop to access each object
-  for (unsigned int i{0}; i < pets.size(); ++i) {
-    if (pets[i])
-      pets[i]->say();
-  }
-  // range based for is better
-  for (const auto &pet : pets) {
-    delete pet;
-  }
-}
-
 // test pets by reading a file
 void testPetsFromFile() {
   cout << "Testing pets by reading pets0.txt" << endl;
@@ -95,7 +75,6 @@ void testPetsFromFile() {
 }
 
 int main() {
-  testCreation();
   testPetsFromFile();
   return 0;
 }

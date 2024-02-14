@@ -1,21 +1,33 @@
 //
-// Created by Yusuf Pisan on 11/20/18.
+// Created by Yusuf Pisan on 2/14/24
 //
 
 #include "pet.h"
+#include <iostream>
+
+using namespace std;
 
 /**
- * factories have been declared, and now have to be registered
- * this is normally done in the cpp file for the concrete factory
- * CatFactory.cpp or DogFactory.cpp
- * Creating a factory automatically registers it
- * Using anonymous namespace to not create a global variable
- *  // NOLINT stops the warning message about may throw an exception
+ * Storage place for the concrete pet factories
+ * Having it available only through this function guarantees that
+ * this static variable is initialized
+ * when a concrete factory tires to register itself
+ * @return map
  */
+map<string, PetFactory *> &Pet::getMap() {
+  static map<string, PetFactory *> factories;
+  return factories;
+}
 
-// // creating the object registers the type at run time
-CatFactory anonymous_CatFactory;
-DogFactory anonymous_DogFactory;
-
-// left intentionally empty, everything in pet.h for
-// demonstration purposes
+// register a concrete factory with a given name
+void Pet::registerType(const string &type, PetFactory *factory) {
+  getMap().emplace(type, factory);
+}
+// find the corresponding pet factory and get factory to create the object
+Pet *Pet::create(const string &type) {
+  if (!getMap().count(type)) {
+    cout << "Don't know how to create " << type << endl;
+    return nullptr;
+  }
+  return getMap().at(type)->create();
+}

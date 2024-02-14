@@ -6,15 +6,14 @@
 using namespace std;
 
 class Fruit {
- public:
+public:
   virtual ~Fruit() = default;
   virtual int eat() = 0;
   int energy{0};
 };
 
-
 class Apple : public Fruit {
- public:
+public:
   Apple() { energy = 10; }
   int eat() override {
     cout << "Ate apple" << endl;
@@ -23,7 +22,7 @@ class Apple : public Fruit {
 };
 
 class Banana : public Fruit {
- public:
+public:
   Banana() { energy = 20; }
   int eat() override {
     cout << "Ate banana" << endl;
@@ -32,22 +31,20 @@ class Banana : public Fruit {
 };
 
 class FruitFactory {
- public:
-  static Fruit *create(const string& name) {
+public:
+  static Fruit *create(const string &name) {
     if (name == "apple")
       return new Apple();
     if (name == "banana")
       return new Banana();
     return nullptr;
   }
-
 };
 
 void FruitTest() {
   vector<Fruit *> eaten;
   string name;
   int totalEnergy{0};
-  cout << "Give name: ";
   while (cin >> name && !name.empty()) {
     Fruit *f = FruitFactory::create(name);
     if (f != nullptr) {
@@ -55,10 +52,9 @@ void FruitTest() {
     } else {
       cout << "Got " << name << ", not a valid fruit" << endl;
     }
-    cout << "Give name: ";
   }
   cout << "Total Energy: " << totalEnergy << endl;
-  for (const auto& f: eaten)
+  for (const auto &f : eaten)
     delete f;
 }
 

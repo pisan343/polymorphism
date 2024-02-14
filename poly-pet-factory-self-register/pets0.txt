@@ -2,3 +2,5 @@ Cat, Fluffy, Persian, black, 12 lbs
 Dog, Biter, Poodle, white, 16 lbs
 Turtle, Speedy, Unknown, brown, 4 lbs
 Cat, Hunter, American, orange, 16 lbs
+Horse, 1100
+
