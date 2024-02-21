@@ -18,14 +18,13 @@
  *
  */
 
+#include "pet.h"
 #include <fstream>
 #include <iostream>
 #include <map>
 #include <sstream>
 #include <string>
 #include <vector>
-
-#include "pet.h"
 
 using namespace std;
 
@@ -57,7 +56,7 @@ vector<Pet *> readPetsFromFile(const string &filename) {
   while (getline(fs, str) && !str.empty()) {
     vector<string> vs = splitString(str);
     // ignoring other pet parameters for this example
-    Pet *pet = Pet::create(vs[0]);
+    Pet *pet = PetFactory::create(vs[0]);
     if (pet)
       pets.push_back(pet);
   }

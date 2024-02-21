@@ -14,20 +14,20 @@ using namespace std;
  * when a concrete factory tires to register itself
  * @return map
  */
-map<string, PetFactory *> &Pet::getMap() {
+map<string, PetFactory *> &PetFactory::getMap() {
   static map<string, PetFactory *> factories;
   return factories;
 }
 
 // register a concrete factory with a given name
-void Pet::registerType(const string &type, PetFactory *factory) {
+void PetFactory::registerType(const string &type, PetFactory *factory) {
   getMap().emplace(type, factory);
 }
 // find the corresponding pet factory and get factory to create the object
-Pet *Pet::create(const string &type) {
+Pet *PetFactory::create(const string &type) {
   if (!getMap().count(type)) {
     cout << "Don't know how to create " << type << endl;
     return nullptr;
   }
-  return getMap().at(type)->create();
+  return getMap().at(type)->makePet();
 }

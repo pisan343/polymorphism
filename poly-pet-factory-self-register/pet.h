@@ -11,15 +11,15 @@ class Pet;
 // An abstract PetFactory, each subclass of Pet needs its own concrete version
 class PetFactory {
 public:
-  virtual Pet *create() const = 0;
-};
+  virtual Pet *makePet() const = 0;
 
-/**
- * The abstract class at the top of the hierarchy
- * All Pets are derived from this class
- * Stores pet factories and creates Pet objects through static functions
- **/
-class Pet {
+  // find the corresponding pet factory and get factory to create the object
+  static Pet *create(const string &type);
+
+protected:
+  // register a concrete factory with a given name
+  static void registerType(const string &type, PetFactory *factory);
+
 private:
   /**
    * Storage place for the concrete pet factories
@@ -29,14 +29,15 @@ private:
    * @return map
    */
   static map<string, PetFactory *> &getMap();
+};
 
+/**
+ * The abstract class at the top of the hierarchy
+ * All Pets are derived from this class
+ * Stores pet factories and creates Pet objects through static functions
+ **/
+class Pet {
 public:
-  // register a concrete factory with a given name
-  static void registerType(const string &type, PetFactory *factory);
-
-  // find the corresponding pet factory and get factory to create the object
-  static Pet *create(const string &type);
-
   // different pets make different noises, all subclasses must implement say
   virtual void say() const = 0;
 

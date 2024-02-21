@@ -9,9 +9,9 @@ using namespace std;
 
 void Horse::say() const { cout << "Neighhhh" << endl; }
 
-HorseFactory::HorseFactory() { Pet::registerType("Horse", this); }
+HorseFactory::HorseFactory() { registerType("Horse", this); }
 
-Pet *HorseFactory::create() const { return new Horse(); }
+Pet *HorseFactory::makePet() const { return new Horse(); }
 
 // creating the object registers the type at run time
 HorseFactory anonymous_HorseFactory;

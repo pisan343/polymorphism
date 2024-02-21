@@ -19,7 +19,7 @@ public:
 class DogFactory : public PetFactory {
 public:
   DogFactory();
-  Pet *create() const override;
+  Pet *makePet() const override;
 };
 
 #endif // DOG_H
