@@ -16,10 +16,10 @@ private:
 
 protected:
   ostream &printer(ostream &os) const override;
-  bool lessThan(const Pet &other) const override;
 
 public:
   Dog(const string &name, const string &breed);
+  bool operator<(const Pet &other) const override;
 };
 
 #endif // DOG_H

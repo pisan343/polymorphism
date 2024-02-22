@@ -15,10 +15,10 @@ private:
 
 protected:
   virtual ostream &printer(ostream &os) const override;
-  bool lessThan(const Pet &other) const override;
 
 public:
   Cat(const string &name, int age);
+  bool operator<(const Pet &other) const override;
 };
 
 #endif // CAT_H

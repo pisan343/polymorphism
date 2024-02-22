@@ -10,7 +10,7 @@ ostream &Cat::printer(ostream &os) const {
   return os;
 }
 
-bool Cat::lessThan(const Pet &other) const {
+bool Cat::operator<(const Pet &other) const {
   // won't work, no variable named age
   // return age < other.age;
 

@@ -11,11 +11,10 @@ class Pet {
 protected:
   string name;
   virtual ostream &printer(ostream &os) const = 0;
-  virtual bool lessThan(const Pet &pet) const = 0;
 
 public:
   const string &getName() const;
-  bool operator<(const Pet &other);
+  virtual bool operator<(const Pet &other) const = 0;
   virtual ~Pet() = default;
 };
 

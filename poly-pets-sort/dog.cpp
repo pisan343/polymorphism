@@ -13,7 +13,7 @@ ostream &Dog::printer(ostream &os) const {
   return os;
 }
 // need to write dog lessThan
-bool Dog::lessThan(const Pet &other) const {
+bool Dog::operator<(const Pet &other) const {
   // downcasting base class to derived class
   const Dog &otherDog = dynamic_cast<const Dog &>(other);
   // better make sure things worked, a bit overkill
