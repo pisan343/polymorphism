@@ -2,6 +2,7 @@
 #define PET_H
 
 #include <map>
+#include <string>
 
 using namespace std;
 
@@ -9,7 +10,8 @@ using namespace std;
 class Pet;
 
 // An abstract PetFactory, each subclass of Pet needs its own concrete version
-class PetFactory {
+class PetFactory
+{
 public:
   virtual Pet *makePet() const = 0;
 
@@ -36,7 +38,8 @@ private:
  * All Pets are derived from this class
  * Stores pet factories and creates Pet objects through static functions
  **/
-class Pet {
+class Pet
+{
 public:
   // different pets make different noises, all subclasses must implement say
   virtual void say() const = 0;

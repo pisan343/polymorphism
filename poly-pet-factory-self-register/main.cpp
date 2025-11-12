@@ -18,6 +18,7 @@
  *
  */
 
+#include <string>
 #include "pet.h"
 #include <fstream>
 #include <iostream>
@@ -29,31 +30,37 @@
 using namespace std;
 
 // helper - get rid of spaces before and after string
-string trimString(const string &str) {
+string trimString(const string &str)
+{
   return str.substr(str.find_first_not_of(' '), str.find_last_not_of(' ') + 1);
 }
 
 // helper - split string into multiple based on delimiter
-vector<string> splitString(const string &str, char delimiter = ',') {
+vector<string> splitString(const string &str, char delimiter = ',')
+{
   vector<string> tokens;
   string token;
   istringstream tokenStream(str);
-  while (getline(tokenStream, token, delimiter)) {
+  while (getline(tokenStream, token, delimiter))
+  {
     tokens.push_back(trimString(token));
   }
   return tokens;
 }
 
 // helper function for reading from file
-vector<Pet *> readPetsFromFile(const string &filename) {
+vector<Pet *> readPetsFromFile(const string &filename)
+{
   vector<Pet *> pets;
   ifstream fs(filename);
-  if (!fs.is_open()) {
+  if (!fs.is_open())
+  {
     cerr << "Could not open file: " << filename << endl;
     return pets;
   }
   string str;
-  while (getline(fs, str) && !str.empty()) {
+  while (getline(fs, str) && !str.empty())
+  {
     vector<string> vs = splitString(str);
     // ignoring other pet parameters for this example
     Pet *pet = PetFactory::create(vs[0]);
@@ -64,16 +71,19 @@ vector<Pet *> readPetsFromFile(const string &filename) {
 }
 
 // test pets by reading a file
-void testPetsFromFile() {
+void testPetsFromFile()
+{
   cout << "Testing pets by reading pets0.txt" << endl;
   vector<Pet *> pets = readPetsFromFile("pets0.txt");
-  for (const auto &pet : pets) {
+  for (const auto &pet : pets)
+  {
     pet->say();
     delete pet;
   }
 }
 
-int main() {
+int main()
+{
   testPetsFromFile();
   return 0;
 }
